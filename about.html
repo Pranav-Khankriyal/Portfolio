@@ -6,6 +6,8 @@
   <title>About — Pranav Khankriyal</title>
   <meta name="description" content="Pranav Khankriyal — Web Developer and AI Systems Writer focused on practical implementations and production-oriented thinking." />
   <link rel="stylesheet" href="styles.css" />
+  <!-- Prevent flash of wrong theme on load -->
+  <script>try{if(localStorage.getItem('pk-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
@@ -21,6 +23,7 @@
         <li><a href="about.html" class="active">About</a></li>
         <li><a href="blogs.html">Blogs</a></li>
       </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" title="Switch to light mode">☀️</button>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -50,7 +53,7 @@
             <h2 class="about-name">Pranav Khankriyal</h2>
             <p class="about-role">Web Developer · AI Systems Writer · Data Annotator</p>
             <div class="about-contact-links">
-              <a href="mailto:pranavkhankriyal@gmail.com" class="btn btn-primary btn-sm">Get in Touch</a>
+              <a href="https://www.linkedin.com/in/pranav-khankriyal-8a0748310" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Get in Touch</a>
             </div>
             <ul class="about-quick-facts">
               <li>

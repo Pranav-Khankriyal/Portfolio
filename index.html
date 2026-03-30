@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pranav Khankriyal — Web Developer & AI Systems Writer</title>
-  <meta name="description" content="Pranav Khankriyal — Web Developer | AI Systems & SaaS Content Writer. Building and analyzing systems at the intersection of web development and AI." />
+  <meta name="description"
+    content="Pranav Khankriyal — Web Developer | AI Systems & SaaS Content Writer. Building and analyzing systems at the intersection of web development and AI." />
   <link rel="stylesheet" href="styles.css" />
+  <!-- Prevent flash of wrong theme on load -->
+  <script>try { if (localStorage.getItem('pk-theme') === 'dark') { document.documentElement.setAttribute('data-theme', 'dark'); } } catch (e) { }</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap"
+    rel="stylesheet" />
 </head>
+
 <body>
 
   <!-- NAVBAR -->
@@ -21,6 +28,8 @@
         <li><a href="about.html">About</a></li>
         <li><a href="blogs.html">Blogs</a></li>
       </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode"
+        title="Switch to light mode">☀️</button>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -38,7 +47,8 @@
         </h1>
         <p class="hero-subtitle">Web Developer <span class="sep">|</span> AI Systems &amp; SaaS Content Writer</p>
         <p class="hero-desc">
-          I build and analyze systems at the intersection of web development and AI — focusing on practical implementations, clean architecture, and production-oriented thinking.
+          I build and analyze systems at the intersection of web development and AI — focusing on practical
+          implementations, clean architecture, and production-oriented thinking.
         </p>
         <div class="hero-ctas">
           <a href="blogs.html" class="btn btn-primary">View Analysis</a>
@@ -47,7 +57,8 @@
       </div>
       <div class="hero-visual">
         <div class="profile-ring">
-          <img src="assets/profile.jpg" alt="Pranav Khankriyal" class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+          <img src="assets/profile.jpg" alt="Pranav Khankriyal" class="profile-img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
           <div class="profile-placeholder" aria-label="Profile photo placeholder" style="display:none">PK</div>
         </div>
         <div class="floating-tag tag-1">AI Systems</div>
@@ -84,17 +95,20 @@
         <div class="service-card">
           <div class="service-icon">✦</div>
           <h3>Web Development</h3>
-          <p>Building web applications using the MERN stack — MongoDB, Express, React, and Node.js — with a focus on clean architecture and practical deployment.</p>
+          <p>Building web applications using the MERN stack — MongoDB, Express, React, and Node.js — with a focus on
+            clean architecture and practical deployment.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">◈</div>
           <h3>AI Systems Analysis</h3>
-          <p>Operator-level breakdowns of AI agent architectures, LLM workflows, and real-world deployment patterns — written for technical and business audiences.</p>
+          <p>Operator-level breakdowns of AI agent architectures, LLM workflows, and real-world deployment patterns —
+            written for technical and business audiences.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">⬡</div>
           <h3>SaaS Content & Strategy</h3>
-          <p>Structured analysis of SaaS products — how they're built, how they scale, and what makes them defensible. Combined with SEO-driven technical writing.</p>
+          <p>Structured analysis of SaaS products — how they're built, how they scale, and what makes them defensible.
+            Combined with SEO-driven technical writing.</p>
         </div>
       </div>
     </section>
@@ -114,7 +128,8 @@
       </div>
       <div class="footer-social">
         <a href="mailto:pranavkhankriyal@gmail.com" class="social-link">Email</a>
-        <a href="https://www.linkedin.com/in/pranav-khankriyal-8a0748310" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/pranav-khankriyal-8a0748310" target="_blank" rel="noopener noreferrer"
+          class="social-link">LinkedIn</a>
         <a href="#" class="social-link">GitHub</a>
         <a href="#" class="social-link">Twitter</a>
       </div>
@@ -126,4 +141,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>

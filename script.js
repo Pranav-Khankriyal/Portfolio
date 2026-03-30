@@ -7,6 +7,40 @@
   'use strict';
 
   /* --------------------------------------------------------
+     THEME TOGGLE — dark ↔ light, persisted in localStorage
+  -------------------------------------------------------- */
+  const THEME_KEY = 'pk-theme';
+  const htmlEl    = document.documentElement;
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      htmlEl.setAttribute('data-theme', 'dark');
+    } else {
+      htmlEl.removeAttribute('data-theme');
+    }
+    // Update every toggle button on the page
+    document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+      btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+      btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      btn.setAttribute('title',       theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    });
+  }
+
+  // Apply saved theme immediately (before paint); default is light
+  const savedTheme = localStorage.getItem(THEME_KEY) || 'light';
+  applyTheme(savedTheme);
+
+  // Wire up toggle button(s)
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('.theme-toggle')) {
+      const current = htmlEl.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next    = current === 'dark' ? 'light' : 'dark';
+      localStorage.setItem(THEME_KEY, next);
+      applyTheme(next);
+    }
+  });
+
+  /* --------------------------------------------------------
      NAVBAR: scroll class + mobile toggle
   -------------------------------------------------------- */
   const navbar    = document.getElementById('navbar');

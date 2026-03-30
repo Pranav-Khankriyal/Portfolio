@@ -8,34 +8,87 @@
    CUSTOM PROPERTIES
    ---------------------------------------------------------- */
 :root {
-  --bg: #0c0d0f;
-  --bg-surface: #131518;
-  --bg-elevated: #1b1d21;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.18);
+  /* ---- DEFAULT: LIGHT THEME ---- */
+  --bg:           #f5f5f0;
+  --bg-surface:   #ffffff;
+  --bg-elevated:  #ebebeb;
+  --border:       rgba(0, 0, 0, 0.09);
+  --border-hover: rgba(0, 0, 0, 0.22);
 
-  --text-primary: #f0f0ee;
-  --text-secondary: #9a9b9d;
-  --text-muted: #5a5b5d;
+  --text-primary:   #111213;
+  --text-secondary: #4a4b4d;
+  --text-muted:     #8a8b8d;
 
-  --accent: #c8f04c;       /* Sharp lime — signature accent */
-  --accent-dim: rgba(200, 240, 76, 0.12);
-  --accent-hover: #d4f562;
+  --accent:      #7aaa00;          /* Deep lime — readable on white */
+  --accent-dim:  rgba(122, 170, 0, 0.10);
+  --accent-hover:#8ec400;
 
   --font-display: 'Inter', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-body:    'Inter', sans-serif;
 
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
   --radius-pill: 100px;
 
-  --nav-h: 68px;
-  --max-w: 1160px;
-  --section-gap: 120px;
+  --nav-h:        68px;
+  --max-w:        1160px;
+  --section-gap:  120px;
 
-  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition:      0.25s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ----------------------------------------------------------
+   DARK THEME OVERRIDES
+   Applied when <html data-theme="dark"> is set
+   ---------------------------------------------------------- */
+[data-theme="dark"] {
+  --bg:           #0c0d0f;
+  --bg-surface:   #131518;
+  --bg-elevated:  #1b1d21;
+  --border:       rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.18);
+
+  --text-primary:   #f0f0ee;
+  --text-secondary: #9a9b9d;
+  --text-muted:     #5a5b5d;
+
+  --accent:      #c8f04c;          /* Sharp lime — signature dark-mode accent */
+  --accent-dim:  rgba(200, 240, 76, 0.12);
+  --accent-hover:#d4f562;
+}
+
+/* Dark mode: navbar glass tint */
+[data-theme="dark"] .navbar {
+  background: rgba(12, 13, 15, 0.82);
+}
+
+[data-theme="dark"] .navbar.scrolled {
+  background: rgba(12, 13, 15, 0.96);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+}
+
+/* Dark mode: hero bg grid (white lines on dark bg) */
+[data-theme="dark"] .hero-bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+}
+
+/* Dark mode: mobile nav overlay */
+[data-theme="dark"] .nav-links {
+  background: rgba(12, 13, 15, 0.98);
+}
+
+/* Dark mode: pullquote */
+[data-theme="dark"] .pullquote {
+  background: #131518;
+}
+
+/* Dark mode: hero badge border */
+[data-theme="dark"] .hero-badge {
+  border-color: rgba(200, 240, 76, 0.25);
 }
 
 /* ----------------------------------------------------------
@@ -102,7 +155,7 @@ em {
   top: 0; left: 0; right: 0;
   z-index: 1000;
   height: var(--nav-h);
-  background: rgba(12, 13, 15, 0.82);
+  background: rgba(245, 245, 240, 0.88);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--border);
@@ -110,8 +163,8 @@ em {
 }
 
 .navbar.scrolled {
-  background: rgba(12, 13, 15, 0.96);
-  box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+  background: rgba(245, 245, 240, 0.97);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
 }
 
 .nav-inner {
@@ -161,6 +214,35 @@ em {
 }
 
 .nav-links a.active { color: var(--accent); }
+
+/* ----------------------------------------------------------
+   THEME TOGGLE BUTTON
+   ---------------------------------------------------------- */
+.theme-toggle {
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 6px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    transform 0.2s ease;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.theme-toggle:hover {
+  background: var(--bg-elevated);
+  border-color: var(--border-hover);
+  transform: rotate(20deg) scale(1.1);
+}
 
 /* Hamburger */
 .hamburger {
@@ -285,8 +367,8 @@ em {
   inset: 0;
   z-index: -1;
   background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    linear-gradient(rgba(0,0,0,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.045) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
 }
@@ -1072,7 +1154,7 @@ em {
     position: fixed;
     top: var(--nav-h);
     left: 0; right: 0;
-    background: rgba(12, 13, 15, 0.98);
+    background: rgba(245, 245, 240, 0.98);
     backdrop-filter: blur(20px);
     flex-direction: column;
     padding: 24px 24px 32px;
