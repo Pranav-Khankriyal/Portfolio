@@ -578,7 +578,7 @@ em {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   margin-top: 48px;
 }
@@ -821,6 +821,96 @@ em {
   padding-left: 20px;
   font-style: italic;
   line-height: 1.75 !important;
+}
+
+/* ----------------------------------------------------------
+   EXPERIENCE CARD
+   ---------------------------------------------------------- */
+.experience-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 28px 24px;
+  transition: border-color var(--transition);
+}
+
+.experience-card:hover {
+  border-color: var(--accent);
+}
+
+.exp-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.exp-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.exp-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.97rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.exp-company {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.01em;
+}
+
+.exp-duration {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  white-space: nowrap;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.exp-duties {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+}
+
+.exp-duties li {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-weight: 300;
+  padding-left: 18px;
+  position: relative;
+}
+
+.exp-duties li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.exp-duties li strong {
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 /* ----------------------------------------------------------
@@ -1186,4 +1276,13 @@ em {
   .cta-inner { padding: 36px 24px; }
 
   .section-title { margin-bottom: 32px; }
+
+  .exp-header {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .exp-duration {
+    white-space: normal;
+  }
 }
