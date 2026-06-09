@@ -8,16 +8,21 @@
   <meta name="description"
     content="Analysis and insights by Pranav Khankriyal — AI agent systems, SaaS product breakdowns, and technical writing." />
   <link rel="stylesheet" href="styles.css" />
-  <!-- Prevent flash of wrong theme on load -->
-  <script>try{if(localStorage.getItem('pk-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}</script>
+  <!-- Prevent flash of wrong theme on load (dark is default) -->
+  <script>try{if(localStorage.getItem('pk-theme')==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
     rel="stylesheet" />
 </head>
 
 <body>
+
+  <!-- PAGE LOADER -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-logo">PK<span class="dot">.</span></div>
+  </div>
 
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
@@ -38,6 +43,7 @@
   <main>
     <!-- PAGE HEADER -->
     <section class="page-hero">
+      <div class="hero-bg-grid"></div>
       <div class="page-hero-content">
         <span class="section-tag">Analysis & Insights</span>
         <h1 class="page-title">Operator-level breakdowns.<br />No fluff, just depth.</h1>
@@ -60,7 +66,7 @@
     <section class="blogs-section">
       <div class="blogs-grid" id="blogsGrid">
 
-        <!-- Blog Card 1 — links to blog1.html -->
+        <!-- Blog Card 1 -->
         <article class="blog-card" data-category="ai">
           <div class="blog-card-header">
             <span class="blog-tag">AI Systems</span>
@@ -108,7 +114,7 @@
 
       </div>
 
-      <!-- Empty state (hidden by default) -->
+      <!-- Empty state -->
       <div class="empty-state" id="emptyState" style="display:none;">
         <span>No posts in this category yet.</span>
         <p>Check back soon — more writing is on the way.</p>

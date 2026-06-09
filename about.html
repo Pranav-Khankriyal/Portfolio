@@ -6,13 +6,18 @@
   <title>About — Pranav Khankriyal | LLM Evaluator & AI Data Annotation Specialist</title>
   <meta name="description" content="Pranav Khankriyal — Web Developer, LLM Evaluator & AI Data Annotation Specialist. Hands-on expertise in prompt evaluation, response scoring, image annotation, pattern extraction, masking, and rubric design for AI training at Outlier (Aether Project)." />
   <link rel="stylesheet" href="styles.css" />
-  <!-- Prevent flash of wrong theme on load -->
-  <script>try{if(localStorage.getItem('pk-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}</script>
+  <!-- Prevent flash of wrong theme on load (dark is default) -->
+  <script>try{if(localStorage.getItem('pk-theme')==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
+
+  <!-- PAGE LOADER -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-logo">PK<span class="dot">.</span></div>
+  </div>
 
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
@@ -33,6 +38,7 @@
   <main>
     <!-- PAGE HEADER -->
     <section class="page-hero">
+      <div class="hero-bg-grid"></div>
       <div class="page-hero-content">
         <span class="section-tag">About</span>
         <h1 class="page-title">Developing systems. Evaluating intelligence.<br />Shaping how AI learns.</h1>
@@ -186,7 +192,7 @@
       </div>
       <div class="footer-social">
         <a href="mailto:pranavkhankriyal@gmail.com" class="social-link">Email</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/pranav-khankriyal-8a0748310" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
         <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link">Twitter</a>
       </div>

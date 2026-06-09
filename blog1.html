@@ -87,12 +87,12 @@
 
   <!-- ===================== ASSETS ===================== -->
   <link rel="stylesheet" href="styles.css" />
-  <!-- Prevent flash of wrong theme on load -->
-  <script>try{if(localStorage.getItem('pk-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}</script>
+  <!-- Prevent flash of wrong theme on load (dark is default) -->
+  <script>try{if(localStorage.getItem('pk-theme')==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
     rel="stylesheet" />
 
   <style>
@@ -423,7 +423,7 @@
       right: -60px;
       width: 220px;
       height: 220px;
-      background: radial-gradient(ellipse, rgba(200,240,76,0.07) 0%, transparent 70%);
+      background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -478,7 +478,7 @@
       height: 20px;
       border-radius: 50%;
       background: var(--accent-dim);
-      border: 1px solid rgba(200,240,76,0.2);
+      border: 1px solid rgba(41,151,255,0.2);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -516,6 +516,11 @@
 </head>
 
 <body>
+
+  <!-- PAGE LOADER -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-logo">PK<span class="dot">.</span></div>
+  </div>
 
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">

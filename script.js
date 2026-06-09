@@ -1,40 +1,48 @@
 /**
- * script.js — Pranav Khankriyal Portfolio
- * Features: mobile menu, scroll effects, blog filtering, entrance animations
+ * script.js — Pranav Khankriyal Portfolio v3
+ * Premium tech interactions:
+ *   Page loader, theme toggle, scroll reveals, card spotlights,
+ *   magnetic buttons, parallax orbs, marquee, navbar effects
  */
 
 (function () {
   'use strict';
 
   /* --------------------------------------------------------
-     THEME TOGGLE — dark ↔ light, persisted in localStorage
+     PAGE LOADER
   -------------------------------------------------------- */
-  const THEME_KEY = 'pk-theme';
-  const htmlEl    = document.documentElement;
+  var loader = document.getElementById('pageLoader');
+  if (loader) {
+    window.addEventListener('load', function () {
+      setTimeout(function () { loader.classList.add('loaded'); }, 900);
+    });
+    setTimeout(function () { if (loader) loader.classList.add('loaded'); }, 2200);
+  }
+
+  /* --------------------------------------------------------
+     THEME TOGGLE — dark default
+  -------------------------------------------------------- */
+  var THEME_KEY = 'pk-theme';
+  var htmlEl = document.documentElement;
 
   function applyTheme(theme) {
-    if (theme === 'dark') {
-      htmlEl.setAttribute('data-theme', 'dark');
+    if (theme === 'light') {
+      htmlEl.setAttribute('data-theme', 'light');
     } else {
       htmlEl.removeAttribute('data-theme');
     }
-    // Update every toggle button on the page
     document.querySelectorAll('.theme-toggle').forEach(function (btn) {
-      btn.textContent = theme === 'dark' ? '☀️' : '🌙';
-      btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-      btn.setAttribute('title',       theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      btn.textContent = theme === 'light' ? '🌙' : '☀️';
+      btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
     });
   }
 
-  // Apply saved theme immediately (before paint); default is light
-  const savedTheme = localStorage.getItem(THEME_KEY) || 'light';
-  applyTheme(savedTheme);
+  applyTheme(localStorage.getItem(THEME_KEY) || 'dark');
 
-  // Wire up toggle button(s)
   document.addEventListener('click', function (e) {
     if (e.target.closest('.theme-toggle')) {
-      const current = htmlEl.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-      const next    = current === 'dark' ? 'light' : 'dark';
+      var current = htmlEl.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      var next = current === 'light' ? 'dark' : 'light';
       localStorage.setItem(THEME_KEY, next);
       applyTheme(next);
     }
@@ -43,29 +51,20 @@
   /* --------------------------------------------------------
      NAVBAR: scroll class + mobile toggle
   -------------------------------------------------------- */
-  const navbar    = document.getElementById('navbar');
-  const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.getElementById('navLinks');
+  var navbar = document.getElementById('navbar');
+  var hamburger = document.getElementById('hamburger');
+  var navLinks = document.getElementById('navLinks');
 
-  // Scroll shadow
-  function handleScroll() {
-    if (navbar) {
-      navbar.classList.toggle('scrolled', window.scrollY > 30);
-    }
-  }
+  window.addEventListener('scroll', function () {
+    if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
 
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll(); // run once on load
-
-  // Hamburger toggle
   if (hamburger && navLinks) {
     hamburger.addEventListener('click', function () {
-      const isOpen = navLinks.classList.toggle('open');
+      var isOpen = navLinks.classList.toggle('open');
       hamburger.classList.toggle('open', isOpen);
       hamburger.setAttribute('aria-expanded', isOpen.toString());
     });
-
-    // Close menu when a nav link is clicked
     navLinks.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         navLinks.classList.remove('open');
@@ -73,10 +72,8 @@
         hamburger.setAttribute('aria-expanded', 'false');
       });
     });
-
-    // Close menu when clicking outside
     document.addEventListener('click', function (e) {
-      if (!navbar.contains(e.target)) {
+      if (navbar && !navbar.contains(e.target)) {
         navLinks.classList.remove('open');
         hamburger.classList.remove('open');
         hamburger.setAttribute('aria-expanded', 'false');
@@ -85,15 +82,13 @@
   }
 
   /* --------------------------------------------------------
-     CONTACT BUTTON — smooth scroll to footer
+     CONTACT BUTTON — scroll to footer
   -------------------------------------------------------- */
-  const contactBtn = document.getElementById('contactBtn');
+  var contactBtn = document.getElementById('contactBtn');
   if (contactBtn) {
     contactBtn.addEventListener('click', function () {
-      const footer = document.getElementById('footer');
-      if (footer) {
-        footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      var footer = document.getElementById('footer');
+      if (footer) footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
 
@@ -102,14 +97,13 @@
   -------------------------------------------------------- */
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href').slice(1);
-      const target   = document.getElementById(targetId);
+      var targetId = this.getAttribute('href').slice(1);
+      var target = document.getElementById(targetId);
       if (target) {
         e.preventDefault();
-        const offset = parseInt(getComputedStyle(document.documentElement)
-          .getPropertyValue('--nav-h')) || 68;
-        const top = target.getBoundingClientRect().top + window.scrollY - offset - 16;
-        window.scrollTo({ top, behavior: 'smooth' });
+        var offset = 80;
+        var top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
       }
     });
   });
@@ -117,120 +111,150 @@
   /* --------------------------------------------------------
      BLOG FILTER (blogs.html only)
   -------------------------------------------------------- */
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const blogCards  = document.querySelectorAll('.blog-card');
-  const emptyState = document.getElementById('emptyState');
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var blogCards = document.querySelectorAll('.blog-card');
+  var emptyState = document.getElementById('emptyState');
 
   if (filterBtns.length && blogCards.length) {
     filterBtns.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        const filter = this.dataset.filter;
-
-        // Update active state
+        var filter = this.dataset.filter;
         filterBtns.forEach(function (b) { b.classList.remove('active'); });
         this.classList.add('active');
-
-        // Filter cards
-        let visible = 0;
+        var visible = 0;
         blogCards.forEach(function (card) {
-          const match = filter === 'all' || card.dataset.category === filter;
-          if (match) {
-            card.style.display = '';
-            card.style.animation = 'fadeUp 0.4s ease both';
-            visible++;
-          } else {
-            card.style.display = 'none';
-          }
+          var match = filter === 'all' || card.dataset.category === filter;
+          if (match) { card.style.display = ''; card.style.animation = 'fadeUp 0.4s ease both'; visible++; }
+          else { card.style.display = 'none'; }
         });
-
-        // Empty state
-        if (emptyState) {
-          emptyState.style.display = visible === 0 ? 'block' : 'none';
-        }
+        if (emptyState) emptyState.style.display = visible === 0 ? 'block' : 'none';
       });
     });
   }
 
   /* --------------------------------------------------------
-     INTERSECTION OBSERVER — entrance animations
+     SCROLL REVEAL — IntersectionObserver
   -------------------------------------------------------- */
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -40px 0px',
-  };
+  var reveals = document.querySelectorAll('.reveal');
+  if (reveals.length) {
+    var revealObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -60px 0px' });
+    reveals.forEach(function (el) { revealObs.observe(el); });
+  }
 
-  const observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        observer.unobserve(entry.target);
+  /* Legacy observe-fade for about/blog detail pages */
+  var legacyEls = document.querySelectorAll(
+    '.service-card, .blog-card, .stat-item, .about-block, .interest-item, .cta-inner, .experience-card'
+  );
+  if (legacyEls.length) {
+    var legacyObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          legacyObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+    legacyEls.forEach(function (el, i) {
+      el.classList.add('observe-fade');
+      el.style.transitionDelay = (i % 4) * 0.08 + 's';
+      legacyObs.observe(el);
+    });
+  }
+
+  /* --------------------------------------------------------
+     BENTO CARD SPOTLIGHT — glow follows cursor
+  -------------------------------------------------------- */
+  document.querySelectorAll('.bento-card').forEach(function (card) {
+    card.addEventListener('mousemove', function (e) {
+      var rect = this.getBoundingClientRect();
+      var x = e.clientX - rect.left - 125;
+      var y = e.clientY - rect.top - 125;
+      var glow = this.querySelector('.bento-card-glow');
+      if (glow) {
+        glow.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
       }
     });
-  }, observerOptions);
-
-  // Add CSS for observed elements (injected once)
-  const style = document.createElement('style');
-  style.textContent = `
-    .observe-fade {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.55s cubic-bezier(0.4,0,0.2,1),
-                  transform 0.55s cubic-bezier(0.4,0,0.2,1);
-    }
-    .observe-fade.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  `;
-  document.head.appendChild(style);
-
-  // Observe cards, sections, blocks
-  const animatables = document.querySelectorAll(
-    '.service-card, .blog-card, .stat-item, .about-block, .interest-item, .cta-inner'
-  );
-
-  animatables.forEach(function (el, i) {
-    el.classList.add('observe-fade');
-    el.style.transitionDelay = (i % 4) * 0.07 + 's';
-    observer.observe(el);
   });
 
   /* --------------------------------------------------------
-     PROFILE IMAGE FALLBACK (ensure placeholder shows)
+     MAGNETIC BUTTONS — subtle cursor follow
+  -------------------------------------------------------- */
+  document.querySelectorAll('.btn').forEach(function (btn) {
+    btn.addEventListener('mousemove', function (e) {
+      var rect = this.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      var cx = rect.width / 2;
+      var cy = rect.height / 2;
+      var dx = (x - cx) / cx;
+      var dy = (y - cy) / cy;
+      this.style.transform = 'translate(' + (dx * 4) + 'px, ' + (dy * 3) + 'px)';
+    });
+    btn.addEventListener('mouseleave', function () {
+      this.style.transform = '';
+    });
+  });
+
+  /* --------------------------------------------------------
+     PROFILE IMAGE FALLBACK
   -------------------------------------------------------- */
   document.querySelectorAll('.profile-img').forEach(function (img) {
     img.addEventListener('error', function () {
       this.style.display = 'none';
-      const placeholder = this.nextElementSibling;
-      if (placeholder) placeholder.style.display = 'flex';
+      var ph = this.nextElementSibling;
+      if (ph) ph.style.display = 'flex';
     });
   });
 
   /* --------------------------------------------------------
-     HOVER TILT on hero profile ring (subtle)
+     HERO TILT on profile ring (about page)
   -------------------------------------------------------- */
-  const heroVisual = document.querySelector('.hero-visual');
+  var heroVisual = document.querySelector('.hero-visual');
   if (heroVisual) {
     heroVisual.addEventListener('mousemove', function (e) {
-      const rect   = this.getBoundingClientRect();
-      const cx     = rect.left + rect.width  / 2;
-      const cy     = rect.top  + rect.height / 2;
-      const dx     = (e.clientX - cx) / (rect.width  / 2);
-      const dy     = (e.clientY - cy) / (rect.height / 2);
-      const ring   = this.querySelector('.profile-ring');
+      var rect = this.getBoundingClientRect();
+      var cx = rect.left + rect.width / 2;
+      var cy = rect.top + rect.height / 2;
+      var dx = (e.clientX - cx) / (rect.width / 2);
+      var dy = (e.clientY - cy) / (rect.height / 2);
+      var ring = this.querySelector('.profile-ring');
       if (ring) {
-        ring.style.transform = `perspective(600px) rotateY(${dx * 6}deg) rotateX(${-dy * 6}deg)`;
-        ring.style.transition = 'transform 0.15s ease';
+        ring.style.transform = 'perspective(600px) rotateY(' + (dx * 8) + 'deg) rotateX(' + (-dy * 8) + 'deg)';
+        ring.style.transition = 'transform 0.1s ease';
       }
     });
-
     heroVisual.addEventListener('mouseleave', function () {
-      const ring = this.querySelector('.profile-ring');
-      if (ring) {
-        ring.style.transform = '';
-        ring.style.transition = 'transform 0.5s ease';
-      }
+      var ring = this.querySelector('.profile-ring');
+      if (ring) { ring.style.transform = ''; ring.style.transition = 'transform 0.5s ease'; }
     });
+  }
+
+  /* --------------------------------------------------------
+     PARALLAX GRID — subtle scroll movement
+  -------------------------------------------------------- */
+  var grid = document.querySelector('.hero-grid-bg');
+  if (grid) {
+    window.addEventListener('scroll', function () {
+      grid.style.transform = 'translateY(' + (window.scrollY * 0.25) + 'px)';
+    }, { passive: true });
+  }
+
+  /* --------------------------------------------------------
+     SCROLL CUE — fade out on scroll
+  -------------------------------------------------------- */
+  var scrollCue = document.querySelector('.scroll-cue');
+  if (scrollCue) {
+    window.addEventListener('scroll', function () {
+      scrollCue.style.opacity = window.scrollY > 100 ? '0' : '';
+      scrollCue.style.pointerEvents = window.scrollY > 100 ? 'none' : '';
+    }, { passive: true });
   }
 
 })();

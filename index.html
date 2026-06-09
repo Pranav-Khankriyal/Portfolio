@@ -4,22 +4,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pranav Khankriyal — Web Developer, LLM Evaluator & AI Data Annotation Specialist</title>
+  <title>Pranav Khankriyal — Web Developer, LLM Evaluator & AI Specialist</title>
   <meta name="description"
-    content="Pranav Khankriyal — Web Developer | LLM Evaluator | AI Data Annotation Specialist. Hands-on experience in prompt & response evaluation, image annotation, pattern extraction, and rubric design for training large language models." />
+    content="Pranav Khankriyal — Web Developer | LLM Evaluator | AI Data Annotation Specialist. Building production-grade web systems and shaping how AI learns." />
   <link rel="stylesheet" href="styles.css" />
-  <!-- Prevent flash of wrong theme on load -->
-  <script>try { if (localStorage.getItem('pk-theme') === 'dark') { document.documentElement.setAttribute('data-theme', 'dark'); } } catch (e) { }</script>
+  <script>try { if (localStorage.getItem('pk-theme') === 'light') { document.documentElement.setAttribute('data-theme', 'light'); } } catch (e) { }</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
+  <!-- PAGE LOADER -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-logo">PK<span class="dot">.</span></div>
+  </div>
+
+  <!-- ============ NAVBAR ============ -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">PK<span class="dot">.</span></a>
@@ -28,115 +30,320 @@
         <li><a href="about.html">About</a></li>
         <li><a href="blogs.html">Blogs</a></li>
       </ul>
-      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode"
-        title="Switch to light mode">☀️</button>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️</button>
+        <a href="mailto:pranavkhankriyal@gmail.com" class="btn btn-primary btn-sm nav-cta">Get in Touch</a>
+      </div>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- HERO -->
   <main>
+
+    <!-- ============ HERO ============ -->
     <section class="hero" id="hero">
-      <div class="hero-bg-grid"></div>
-      <div class="hero-content">
-        <span class="hero-badge">Available for freelance</span>
-        <h1 class="hero-name">
-          Pranav<br /><em>Khankriyal</em>
+      <!-- Animated gradient orbs -->
+      <div class="hero-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+      </div>
+      <div class="hero-grid-bg"></div>
+
+      <div class="hero-inner">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Available for Projects
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hero-line"><span class="word">I build systems</span></span>
+          <span class="hero-line"><span class="word">that make <em>AI</em></span></span>
+          <span class="hero-line"><span class="word"><em>smarter.</em></span></span>
         </h1>
-        <p class="hero-subtitle">Web Developer <span class="sep">|</span> LLM Evaluator <span class="sep">|</span> AI Data Annotation Specialist</p>
-        <p class="hero-desc">
-          I build production-grade web systems and contribute directly to AI model quality &mdash; through hands-on LLM evaluation, structured data annotation, and rubric design that shapes how language models learn and reason.
+
+        <p class="hero-subtitle">
+          Web Developer · LLM Evaluator · AI Data Annotation Specialist
         </p>
+
+        <p class="hero-desc">
+          Production-grade web systems, structured LLM evaluation, and rubric design that shapes how language models learn, reason, and perform.
+        </p>
+
         <div class="hero-ctas">
-          <a href="about.html" class="btn btn-primary">View Experience</a>
-          <button class="btn btn-outline" id="contactBtn">Contact</button>
+          <a href="about.html" class="btn btn-primary">
+            <span>View My Work</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="blogs.html" class="btn btn-glass">Read My Analysis</a>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="profile-ring">
-          <img src="assets/profile.jpg" alt="Pranav Khankriyal" class="profile-img"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
-          <div class="profile-placeholder" aria-label="Profile photo placeholder" style="display:none">PK</div>
-        </div>
-        <div class="floating-tag tag-1">LLM Evaluator</div>
-        <div class="floating-tag tag-2">AI Annotation</div>
-        <div class="floating-tag tag-3">MERN Stack</div>
+
+      <!-- Scroll cue -->
+      <div class="scroll-cue">
+        <div class="scroll-line"></div>
       </div>
     </section>
 
-    <!-- QUICK STATS -->
-    <section class="stats-strip">
-      <div class="stat-item">
-        <span class="stat-num">MERN</span>
-        <span class="stat-label">Web Development Stack</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <span class="stat-num">LLM</span>
-        <span class="stat-label">Evaluation & Annotation</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <span class="stat-num">AI</span>
-        <span class="stat-label">Training Data & Rubric Design</span>
-      </div>
-    </section>
-
-    <!-- WHAT I DO -->
-    <section class="services">
-      <div class="section-header">
-        <span class="section-tag">What I Do</span>
-        <h2 class="section-title">Development meets evaluation.<br />Engineering meets AI quality.</h2>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">✦</div>
-          <h3>Web Development</h3>
-          <p>Building full-stack web applications using the MERN stack — MongoDB, Express, React, and Node.js — with a focus on clean architecture and scalable deployment patterns.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">◈</div>
-          <h3>LLM Evaluation & AI Data Annotation</h3>
-          <p>Hands-on experience evaluating LLM outputs for quality, safety, and alignment — including prompt evaluation, response scoring, image annotation, pattern extraction, and masking — as part of Outlier's Aether Project.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">⬡</div>
-          <h3>Rubric Design & AI Documentation</h3>
-          <p>Designing structured annotation rubrics and documentation frameworks that standardize quality criteria for training large language models, ensuring consistency, objectivity, and measurable alignment outcomes.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">⟡</div>
-          <h3>AI Systems Analysis & Writing</h3>
-          <p>Operator-level breakdowns of AI agent architectures, LLM workflows, and real-world deployment patterns — written for technical operators, product teams, and AI practitioners.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer" id="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <span class="nav-logo">PK<span class="dot">.</span></span>
-        <p>Pranav Khankriyal</p>
-      </div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="blogs.html">Blogs</a>
-      </div>
-      <div class="footer-social">
-        <a href="mailto:pranavkhankriyal@gmail.com" class="social-link">Email</a>
-        <a href="https://www.linkedin.com/in/pranav-khankriyal-8a0748310" target="_blank" rel="noopener noreferrer"
-          class="social-link">LinkedIn</a>
-        <a href="#" class="social-link">GitHub</a>
-        <a href="#" class="social-link">Twitter</a>
+    <!-- ============ MARQUEE TICKER ============ -->
+    <div class="marquee-strip">
+      <div class="marquee-track">
+        <span>MERN Stack</span><span class="marquee-dot">◈</span>
+        <span>LLM Evaluation</span><span class="marquee-dot">◈</span>
+        <span>Prompt Engineering</span><span class="marquee-dot">◈</span>
+        <span>AI Data Annotation</span><span class="marquee-dot">◈</span>
+        <span>Rubric Design</span><span class="marquee-dot">◈</span>
+        <span>React & Node.js</span><span class="marquee-dot">◈</span>
+        <span>Pattern Extraction</span><span class="marquee-dot">◈</span>
+        <span>AI Systems Analysis</span><span class="marquee-dot">◈</span>
+        <!-- Duplicate for seamless loop -->
+        <span>MERN Stack</span><span class="marquee-dot">◈</span>
+        <span>LLM Evaluation</span><span class="marquee-dot">◈</span>
+        <span>Prompt Engineering</span><span class="marquee-dot">◈</span>
+        <span>AI Data Annotation</span><span class="marquee-dot">◈</span>
+        <span>Rubric Design</span><span class="marquee-dot">◈</span>
+        <span>React & Node.js</span><span class="marquee-dot">◈</span>
+        <span>Pattern Extraction</span><span class="marquee-dot">◈</span>
+        <span>AI Systems Analysis</span><span class="marquee-dot">◈</span>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2025 Pranav Khankriyal. All rights reserved.</p>
+
+    <!-- ============ ABOUT / INTRO SECTION ============ -->
+    <section class="about-intro" id="about-intro">
+      <div class="container">
+        <div class="intro-grid">
+          <div class="intro-text reveal">
+            <span class="section-tag">About Me</span>
+            <h2 class="intro-headline">Developer by craft.<br />AI evaluator by expertise.</h2>
+            <p class="intro-body">
+              I operate at the intersection of web development and AI quality — building full-stack applications with the MERN stack while directly contributing to how large language models improve through structured evaluation, annotation, and rubric engineering at Outlier's Aether Project.
+            </p>
+            <div class="intro-stats">
+              <div class="mini-stat">
+                <span class="mini-stat-value">MERN</span>
+                <span class="mini-stat-label">Full-Stack Development</span>
+              </div>
+              <div class="mini-stat">
+                <span class="mini-stat-value">LLM</span>
+                <span class="mini-stat-label">Evaluation & Annotation</span>
+              </div>
+              <div class="mini-stat">
+                <span class="mini-stat-value">AI</span>
+                <span class="mini-stat-label">Rubric & Training Data</span>
+              </div>
+            </div>
+          </div>
+          <div class="intro-visual reveal">
+            <div class="profile-card-glass">
+              <div class="profile-ring">
+                <img src="assets/profile.jpg" alt="Pranav Khankriyal" class="profile-img"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+                <div class="profile-placeholder" style="display:none">PK</div>
+              </div>
+              <div class="profile-info">
+                <h3>Pranav Khankriyal</h3>
+                <p>Web Developer · LLM Evaluator</p>
+              </div>
+              <div class="profile-meta">
+                <div class="meta-item">
+                  <span class="meta-icon">💼</span>
+                  <span>Outlier · Aether Project</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-icon">📍</span>
+                  <span>India</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-icon">🎓</span>
+                  <span>BTech CS · AI Minor</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BENTO GRID — WHAT I DO ============ -->
+    <section class="bento-section" id="services">
+      <div class="container">
+        <div class="section-header-center reveal">
+          <span class="section-tag">What I Do</span>
+          <h2 class="section-title-lg">Expertise at the frontier<br />of code and intelligence.</h2>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Large card -->
+          <div class="bento-card bento-large reveal">
+            <div class="bento-card-glow"></div>
+            <div class="bento-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Web Development</h3>
+            <p>Building full-stack web applications using the MERN stack — MongoDB, Express, React, and Node.js — with clean architecture and scalable deployment patterns.</p>
+            <div class="bento-tags">
+              <span>MongoDB</span><span>Express.js</span><span>React</span><span>Node.js</span>
+            </div>
+          </div>
+
+          <!-- Medium card -->
+          <div class="bento-card bento-medium reveal">
+            <div class="bento-card-glow"></div>
+            <div class="bento-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            </div>
+            <h3>LLM Evaluation & AI Annotation</h3>
+            <p>Hands-on evaluation of LLM outputs for quality, safety, and alignment — prompt evaluation, response scoring, image annotation, and pattern extraction.</p>
+          </div>
+
+          <!-- Medium card -->
+          <div class="bento-card bento-medium reveal">
+            <div class="bento-card-glow"></div>
+            <div class="bento-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8m8 4H8m2-8H8"/></svg>
+            </div>
+            <h3>Rubric Design & Documentation</h3>
+            <p>Designing annotation rubrics and documentation frameworks that standardize quality criteria for training LLMs with consistency and objectivity.</p>
+          </div>
+
+          <!-- Wide card -->
+          <div class="bento-card bento-wide reveal">
+            <div class="bento-card-glow"></div>
+            <div class="bento-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            </div>
+            <h3>AI Systems Analysis & Technical Writing</h3>
+            <p>Operator-level breakdowns of AI agent architectures, LLM workflows, and real-world deployment patterns — written for technical operators, product teams, and AI practitioners who build and ship.</p>
+            <a href="blogs.html" class="bento-link">Read my analysis →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE HIGHLIGHT ============ -->
+    <section class="experience-section" id="experience">
+      <div class="container">
+        <div class="exp-layout reveal">
+          <div class="exp-left">
+            <span class="section-tag">Experience</span>
+            <h2 class="section-title-lg">Real-world AI<br />training at scale.</h2>
+            <p class="exp-summary">Direct contribution to LLM quality through Outlier's Aether Project — evaluating model outputs, building annotation rubrics, and producing the structured training data that shapes how AI reasons.</p>
+            <a href="about.html" class="btn btn-outline">Full Experience →</a>
+          </div>
+          <div class="exp-right">
+            <div class="exp-card-featured">
+              <div class="exp-card-header">
+                <div>
+                  <span class="exp-role-title">LLM Evaluator & AI Annotation Specialist</span>
+                  <span class="exp-company-name">Outlier · Aether Project</span>
+                </div>
+                <span class="exp-time">Jan – Apr 2026</span>
+              </div>
+              <ul class="exp-highlights">
+                <li>Evaluated LLM-generated responses for quality, factual accuracy, and alignment with safety benchmarks</li>
+                <li>Conducted structured prompt evaluation and response scoring</li>
+                <li>Performed image annotation, pattern extraction, and data masking</li>
+                <li>Designed annotation rubrics — scoring frameworks ensuring evaluator consistency at scale</li>
+                <li>Produced annotation documentation, guidelines, and calibration notes</li>
+              </ul>
+              <div class="exp-skills-row">
+                <span>LLM Eval</span><span>Prompt QA</span><span>Image Annotation</span><span>Rubric Design</span><span>Documentation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED WRITING ============ -->
+    <section class="writing-section" id="writing">
+      <div class="container">
+        <div class="section-header-row reveal">
+          <div>
+            <span class="section-tag">Analysis & Writing</span>
+            <h2 class="section-title-lg">Depth over noise.</h2>
+          </div>
+          <a href="blogs.html" class="btn btn-outline">View All →</a>
+        </div>
+
+        <div class="writing-grid">
+          <a href="blog1.html" class="writing-card reveal">
+            <div class="writing-card-inner">
+              <div class="writing-meta">
+                <span class="writing-tag">AI Systems</span>
+                <span class="writing-date">March 2026 · 12 min</span>
+              </div>
+              <h3>Most AI Agents Don't Fail Because the Model Is Weak. They Fail Because Nobody Engineered Them for Production.</h3>
+              <p>A structured breakdown of every failure mode across real SaaS and internal ops deployments.</p>
+              <span class="writing-read-more">Read Analysis →</span>
+            </div>
+          </a>
+
+          <a href="blog2.html" class="writing-card reveal">
+            <div class="writing-card-inner">
+              <div class="writing-meta">
+                <span class="writing-tag">SaaS Strategy</span>
+                <span class="writing-date">May 2025 · 18 min</span>
+              </div>
+              <h3>The SaaS Moat Playbook: What Separates Defensible Products from Replaceable Ones</h3>
+              <p>Why some SaaS companies get commoditized while others compound — network effects, data moats, and workflow lock-in.</p>
+              <span class="writing-read-more">Read Analysis →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA SECTION ============ -->
+    <section class="cta-section">
+      <div class="cta-orbs">
+        <div class="orb orb-cta-1"></div>
+        <div class="orb orb-cta-2"></div>
+      </div>
+      <div class="container">
+        <div class="cta-content reveal">
+          <h2>Let's build something<br /><em>worth building.</em></h2>
+          <p>Open to freelance projects, collaborations, and opportunities at the intersection of development and AI.</p>
+          <div class="cta-btns">
+            <a href="mailto:pranavkhankriyal@gmail.com" class="btn btn-primary btn-lg">
+              <span>Get in Touch</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/pranav-khankriyal-8a0748310" target="_blank" rel="noopener noreferrer" class="btn btn-glass">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="nav-logo footer-logo">PK<span class="dot">.</span></span>
+          <p class="footer-tagline">Building at the intersection of<br />code and intelligence.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="blogs.html">Blogs</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="mailto:pranavkhankriyal@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/pranav-khankriyal-8a0748310" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="#">GitHub</a>
+          <a href="#">Twitter / X</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Pranav Khankriyal. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
