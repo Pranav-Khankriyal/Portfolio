@@ -67,7 +67,7 @@ h1, h2, h3, h4, h5, h6 {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 80px;
 }
 
 .text-center { text-align: center; }
@@ -78,7 +78,7 @@ h1, h2, h3, h4, h5, h6 {
 /* ---------- LEFT NAV ---------- */
 .leftnav {
   position: fixed;
-  left: 40px;
+  left: 24px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -107,7 +107,7 @@ h1, h2, h3, h4, h5, h6 {
 /* ---------- SOCIAL SIDEBAR ---------- */
 .social-sidebar {
   position: fixed;
-  right: 40px;
+  right: 24px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -603,6 +603,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
   .leftnav { display: none; }
   .social-sidebar { display: none; }
 
